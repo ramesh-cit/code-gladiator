@@ -5,7 +5,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Lambda expressions are a new and important feature included in Java SE 8.
+ * https://www.w3resource.com/java-exercises/lambda/index.php
+ */
+import java.util.function.BiFunction;
+
 public class LambdaExpressionExample {
+
+    interface SumCalculator {
+        int sum(int a, int b);
+    }
     public static void main(String[] args) {
         // Runnable Lambda expression
         String message = "Hello, Lambda!";
@@ -28,6 +38,24 @@ public class LambdaExpressionExample {
         List<Integer> numbers1 = Arrays.asList(1, 2, 3, 4, 5);
         numbers1.forEach(n -> System.out.println(n));
         numbers1.forEach(System.out::println);
+
+        // implement a lambda expression to find the sum of two integers
+        SumCalculator sumCalculator = (x, y) -> x + y;
+        int result = sumCalculator.sum(7, 6);
+        System.out.println("Sum 7,6): " + result);
+        result = sumCalculator.sum(15, -35);
+        System.out.println("Sum 15, -35): " + result);
+        //  implement a lambda expression to find the sum of two integers using the BiFunction interface
+        BiFunction<Integer, Integer, Integer> sum = (a, b) -> a + b;
+        // Test the lambda with two integers
+        int num1 = 10;
+        int num2 = 20;
+        // Calculate and print the result
+        System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum.apply(num1, num2));
+        //implement a lambda expression to check if a given string is empty.
+        //Implement a lambda expression to convert a list of strings to uppercase and lowercase
+        // lambda expression to create a lambda expression to check if a number is prime.
+
     }
 
 }
