@@ -1,11 +1,11 @@
-package com.code.leet;
+package com.leet;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
 public class CoinChange {
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
        Comparator<Integer> comparator = new Comparator<Integer>() {
 
             @Override
@@ -14,12 +14,14 @@ public class CoinChange {
             }
         };
         int[] coins = {2, 1, 5, 10};
-        Arrays.sort(Arrays.asList(coins), comparator);
-        System.out.println("Sorted Coins: "+coins);
+        Integer[] coinObjects = Arrays.stream(coins).boxed().toArray(Integer[]::new);
+        Arrays.sort(coinObjects, comparator);
+        coins = Arrays.stream(coinObjects).mapToInt(i -> i).toArray();
+        System.out.println("Sorted Coins: "+ Arrays.toString(coins));
         System.out.println("Result is "+change(25, coins));
     }
 
-    public int change(int amount, int[] coins) {
+    public static int change(int amount, int[] coins) {
 
       List<Integer> coinList = new ArrayList<> ();
       int total = 0;
